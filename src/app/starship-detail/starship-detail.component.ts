@@ -12,6 +12,7 @@ export class StarshipDetailComponent implements OnInit {
 
   starship!: Starship;
   id: number = 0;
+  starshipImage: string= '';
 
   constructor(private activRoute: ActivatedRoute, private starShipsService: StarshipsService) { }
 
@@ -25,10 +26,14 @@ export class StarshipDetailComponent implements OnInit {
           this.starShipsService.getOne(this.id).subscribe((starships: Starship) => {
             this.starship = starships;
             console.log(this.starship)
+            this.starshipImage = 'https://starwars-visualguide.com/assets/img/starships/'+this.id+'.jpg'
+            console.log(this.starshipImage)
           }
           )
         }
-      )
+      );
+
+
   }
 
 }
