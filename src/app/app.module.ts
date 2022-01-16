@@ -7,6 +7,8 @@ import { StarshipsComponent } from './starships/starships.component';
 import { HeaderComponent } from './header/header.component';
 import { HttpClientModule } from '@angular/common/http';
 import { StarshipDetailComponent } from './starship-detail/starship-detail.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+
 
 
 
@@ -22,7 +24,8 @@ import { StarshipDetailComponent } from './starship-detail/starship-detail.compo
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

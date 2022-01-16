@@ -1,5 +1,30 @@
-<button class="btn btn-primary" (click) = "getOne()"> Api 9 test</button>
-<button class="btn btn-primary" (click) = "getAll()"> Api test</button>
-<ul *ngFor= "let ship of ships" >
-  <li style="color:white"> {{ship.name}} | {{ship.model}}</li>
+<!-- <button class="btn btn-primary" (click) = "getOne()"> Api 9 test</button> -->
+
+<ul *ngFor="let starship of starships | paginate : {
+  itemsPerPage: itemsPerPage,
+  currentPage: page,
+  totalItems: totalItems
+
+}; let i = index ">
+  <li><a style="color:white"  routerLinkActive="active"  (click) = "onSelect(starship, i)"> {{starship.name}} | {{starship.model}}</a>
+  </li>
+
 </ul>
+
+<pagination-controls class="pagi" (pageChange)="gty((page = $event))"></pagination-controls>
+
+<!-- <app-recipe-detail
+      *ngIf="selectedRecipe; else infoText"
+      [recipe]="selectedRecipe"></app-recipe-detail>
+      (click) = "onSelect(starship, i)"
+     [routerLink] ="['/starships', selectedShip]" -->
+
+<!--
+ <app-starship-detail *ngIf = "selectedShip" [starship] = "selectedShip"></app-starship-detail> -->
+<!-- [routerLink] ="['/starships', selectedShip]"  -->
+<!-- [class.selected]= "ship === selectedShip" -->
+
+<!-- (click) = "onSelect(ship)"
+  [routerLink] ="['/starships', selectedShip]"
+  routerLinkActive= "active" -->
+ <!-- <router-outlet></router-outlet>-->

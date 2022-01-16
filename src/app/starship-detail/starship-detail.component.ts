@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Params } from '@angular/router';
+import { Starship } from '../models/starship';
+import { StarshipsService } from '../../services/starships.service';
 
 @Component({
   selector: 'app-starship-detail',
@@ -7,9 +10,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StarshipDetailComponent implements OnInit {
 
-  constructor() { }
+  starship!: Starship;
+  id: number = 0;
+
+  constructor(private activRoute: ActivatedRoute, private starShipsService: StarshipsService) { }
+
 
   ngOnInit(): void {
+    this.activRoute.params
+      .subscribe(
+        (params: Params) => {
+          console.log(params)
+          this.id = params['id'];
+          this.starShipsService.getOne(this.id).subscribe((starships: Starship) => {
+            this.starship = starships;
+            console.log(this.starship)
+          }
+          )
+        }
+      )
   }
 
 }
+
