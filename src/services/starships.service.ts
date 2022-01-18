@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import {map} from 'rxjs/operators'
+import { map } from 'rxjs/operators'
 import { Starship } from 'src/app/models/starship';
+import { ApisData } from './infinite-scroll.service';
 
 
 // export interface Ships {
@@ -26,73 +27,42 @@ import { Starship } from 'src/app/models/starship';
 //   edited: string;
 // }
 
-// export interface ApisData{
-//   count: number,
-//   next: string,
-//   previous: any,
-//   results:Starship;
-
-// }
-
-
-
-
 @Injectable({ providedIn: 'root' })
-export class StarshipsService  {
-  constructor(private http: HttpClient) {}
+export class StarshipsService {
+  constructor(private http: HttpClient) { }
   baseUrl = 'https://swapi.dev/api/starships/';
- // baseUrl = 'https://swapi.py4e.com/api/starships';
+  // baseUrl = 'https://swapi.py4e.com/api/starships';
   ships: Starship[] = []
 
-getById(id:number): Observable<Starship[]> {
-  console.log(`${this.baseUrl}${id}}`)
-    return this.getData(`${this.baseUrl}${id}/`)
-}
 
-getId(url: string){
-let newurl =  url.replace( /^\D+/g, '');
-newurl = newurl.replace('/', '')
-return parseInt(newurl);
+  getId(url: string) {
+    let newurl = url.replace(/^\D+/g, '').replace('/', '')
+    return parseInt(newurl);
 
-}
+  }
 
-getAll(): Observable<Starship[]> {
-return this.getData(`${this.baseUrl}`)
+  getAll(): Observable<Starship[]> {
+    return this.getData(`${this.baseUrl}`)
 
-}
- private getData(url:string){
-   return this.http.get(url).
-   pipe(map((response:any) =>
-
-   <Starship[]>response.results))
- }
+  }
+  private getData(url: string) {
+    return this.http.get(url).
+      pipe(map((response: any) =>
+        <Starship[]>response.results))
+  }
 
 
   getOne(id: number) {
-    return this.http.get<Starship>(`${this.baseUrl}${id}`)
+    return this.http.get<Starship>(`${this.baseUrl}/${id}`)
   }
 
-getShip(index: number){
-  console.log(this.ships[index]);
-  return this.ships[index];
-}
+  getApi(page: number) {
+    // console.log( this.http.get(`${this.baseUrl}/?page=${page}`))
+    return this.http.get(`${this.baseUrl}/?page=${page}`).pipe(map((response: any) =>
+      <Starship[]>response.results))
+
+  }
 
 }
-  // getAll() {
-  //  return this.http.get<Starship[]>(this.baseUrl).pipe(map(response => {
-  // console.log(response);
 
-  //  return  this.ships= response;
-
-  //   //  console.log(this.result)
-
-  //  }))
-
-  //}
-
-  //getPage(){
-
-
-     // `this.baseUrl ?page=${page}&size=${this.itemsPerPage}`)
-  //}
 

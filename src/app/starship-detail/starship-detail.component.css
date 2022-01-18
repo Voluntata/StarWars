@@ -1,0 +1,39 @@
+.detail{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  margin: 0 15%;
+
+}
+
+.name{
+  text-transform: uppercase;
+  font-weight: bold;
+  align-self: flex-start;
+}
+
+.image{
+  width: 100%;
+  height: auto;
+}
+.image .img{
+  object-fit:fill;
+  width: 100%;
+
+
+}
+
+.properties{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width:100%;
+
+}
+
+.properties p{
+  display: inline-block;
+  width: 50%;
+}

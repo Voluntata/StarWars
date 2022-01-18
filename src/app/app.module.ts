@@ -8,6 +8,7 @@ import { HeaderComponent } from './header/header.component';
 import { HttpClientModule } from '@angular/common/http';
 import { StarshipDetailComponent } from './starship-detail/starship-detail.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { HomeComponent } from './home/home.component';
 
 
 
@@ -18,6 +19,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     HeaderComponent,
     StarshipsComponent,
     StarshipDetailComponent,
+    HomeComponent,
 
 
   ],

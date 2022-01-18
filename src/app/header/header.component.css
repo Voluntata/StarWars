@@ -1,0 +1,72 @@
+.login{
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 30px 20px;
+}
+
+.login button{
+  background-color: transparent;
+  border: none;
+  color: rgba(245, 245, 245, 0.568);
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.login button:hover{
+  font-weight: bold;
+  color: whitesmoke;
+}
+
+.logo{
+  display: flex;
+  justify-content: center;
+}
+
+.navbar{
+  width: 100vw;
+  border-top: 2px solid whitesmoke;
+  border-bottom: 2px solid whitesmoke;
+  margin-bottom: 1%;
+
+}
+.navbar ul{
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.navbar ul li{
+  display: block;
+  width: fit-content;
+  text-transform: uppercase;
+  text-align: center;
+  border-left:1px solid whitesmoke;
+  border-right:1px solid whitesmoke;
+  padding: 15px 0;
+}
+
+.navbar ul li:last-child{
+  border-left: none;
+
+}
+
+.navbar ul li a{
+  display: inline-block;
+  padding:  0px 15px;
+  width: auto;
+  text-decoration: none;
+
+   color: rgba(245, 245, 245, 0.568);
+}
+
+.navbar ul li a:visited{
+  color: rgba(245, 245, 245, 0.568);
+}
+.navbar ul li a:hover{
+  font-weight: bold;
+  border-bottom: 2px solid yellow;
+  color: whitesmoke;
+}

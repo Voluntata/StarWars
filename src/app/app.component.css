@@ -6,6 +6,11 @@ body{
   background-image: url('src/assets/stars-night-sky.jpg');
   background-repeat: no-repeat;
   background-size: cover;
+  color: whitesmoke;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 
