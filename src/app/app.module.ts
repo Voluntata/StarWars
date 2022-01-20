@@ -9,6 +9,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { StarshipDetailComponent } from './starship-detail/starship-detail.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { HomeComponent } from './home/home.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { LoginFormComponent } from './login-form/login-form.component';
+import { FormsModule } from '@angular/forms';
+import { SignInComponent } from './sign-in/sign-in.component';
 
 
 
@@ -20,16 +24,23 @@ import { HomeComponent } from './home/home.component';
     StarshipsComponent,
     StarshipDetailComponent,
     HomeComponent,
-
+    LoginFormComponent,
+    SignInComponent
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    NgbModule,
+    FormsModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    LoginFormComponent,
+    SignInComponent
+  ]
 })
 export class AppModule { }

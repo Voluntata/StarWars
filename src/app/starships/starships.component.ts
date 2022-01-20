@@ -3,10 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { StarshipsService } from 'src/services/starships.service';
 import { Starship } from '../models/starship';
-import { ApisData } from '../../services/infinite-scroll.service';
-import { map } from 'rxjs/operators';
-
-
 
 @Component({
   selector: 'app-starships',
@@ -20,28 +16,23 @@ export class StarshipsComponent implements OnInit {
   itemsPerPage: number = 10;
   totalItems: any;
 
-  id: number = 0;
+  id: number = 1;
   ships: Starship[] = []
   starships: Starship[] = [];
   selectedShip!: Starship;
 
   ngOnInit(): void {
 
-    // this.starshipsService.getAll()
-    // .subscribe((starships: Starship[]) => {
-    //   this.starships = starships;
+     this.getPage()
 
-    this.getPage()
-
-    //});
   }
 
-  gty(page: any) {
-
-    this.http.get(`${this.starshipsService.baseUrl}?page=${page=this.page}&size=${this.itemsPerPage}/`).subscribe((data: any) => {
-      this.starships = data.result;
-
-    })
+  gty(page:any) {
+    this.http.get(`${this.starshipsService.baseUrl}?page=${page}&size=${this.itemsPerPage}/`)
+      .subscribe((data: any) => {
+        if (data.result){
+        this.starships.push(data.result);}
+      })
   }
 
   onSelect(ship: Starship) {
@@ -52,17 +43,20 @@ export class StarshipsComponent implements OnInit {
 
   }
   getPage() {
-    this.starshipsService.getApi(this.page).subscribe(response => {
+for (let i = 0; i<4; i++){
+    this.starshipsService.getApi(this.page+i).subscribe(response => {
       console.log(response);
-      //this.ships = response;
       this.starships.push(...response)
+
     });
+}
   }
 
 
-  next() {
-    this.page = this.page + 1;
-    this.getPage();
 
-  }
+
+
+
+
+
 }

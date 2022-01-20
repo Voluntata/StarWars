@@ -36,5 +36,9 @@ export class StarshipDetailComponent implements OnInit {
 
   }
 
+ async defaultImage(){
+   this.starshipImage = 'https://starwars-visualguide.com/assets/img/big-placeholder.jpg'
+  }
+
 }
 

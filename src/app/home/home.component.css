@@ -10,7 +10,7 @@
 }
 
 .bcImage{
-  width: 100vw;
+  width: 90vw;
   height: 100vh;
   margin: 10px auto;
   background-image: url('src/assets/starships.jpg');

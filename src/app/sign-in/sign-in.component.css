@@ -1,0 +1,56 @@
+.container{
+  background-color: rgb(48, 47, 47);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  padding: 5%;
+}
+
+ h4{
+ color: yellow;
+ text-transform: uppercase;
+}
+
+button.close-btn{
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin: 5px;
+  background-color: transparent;
+  color: whitesmoke;
+  font-size: large;
+  font-weight: bold;
+}
+ input{
+   margin: 3% 0;
+ }
+
+ button.btn-submit{
+   width: 100%;
+ }
+
+ .text{
+   display: inline-block;
+   color: rgba(245, 245, 245, 0.685);
+   font-size:x-small;
+   margin-top: -2%;
+
+
+ }
+
+ button.signIn{
+   color: yellow;
+   background-color: transparent;
+   border: none;
+   width: 100%;
+   margin-top: 2%;
+ }
+ button.signIn:hover{
+   border: solid 1px yellow;
+   border-radius: 5px;
+ }
+
+ p{
+   color: rgba(245, 245, 245, 0.685); ;
+ }

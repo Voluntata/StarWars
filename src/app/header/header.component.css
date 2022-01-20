@@ -13,7 +13,7 @@
   cursor: pointer;
 }
 .login button:hover{
-  font-weight: bold;
+  text-shadow: 0 0 1px black;
   color: whitesmoke;
 }
 
@@ -27,6 +27,7 @@
   border-top: 2px solid whitesmoke;
   border-bottom: 2px solid whitesmoke;
   margin-bottom: 1%;
+  padding: 0;
 
 }
 .navbar ul{
@@ -60,13 +61,16 @@
   text-decoration: none;
 
    color: rgba(245, 245, 245, 0.568);
+   box-sizing: content-box;
 }
+
 
 .navbar ul li a:visited{
   color: rgba(245, 245, 245, 0.568);
 }
 .navbar ul li a:hover{
-  font-weight: bold;
-  border-bottom: 2px solid yellow;
+  text-shadow: 0 0 1px black;
+  box-shadow: 0px 3px 0px 0px purple;
   color: whitesmoke;
+  box-sizing: border-box;
 }

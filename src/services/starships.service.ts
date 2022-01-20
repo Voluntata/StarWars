@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators'
 import { Starship } from 'src/app/models/starship';
-import { ApisData } from './infinite-scroll.service';
+// import { ApisData } from './infinite-scroll.service';
 
 
 // export interface Ships {
@@ -57,8 +57,9 @@ export class StarshipsService {
   }
 
   getApi(page: number) {
-    // console.log( this.http.get(`${this.baseUrl}/?page=${page}`))
-    return this.http.get(`${this.baseUrl}/?page=${page}`).pipe(map((response: any) =>
+
+    return this.http.get(`${this.baseUrl}/?page=${page}`)
+    .pipe(map((response: any) =>
       <Starship[]>response.results))
 
   }

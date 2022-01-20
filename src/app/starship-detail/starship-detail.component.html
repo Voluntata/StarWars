@@ -1,9 +1,8 @@
 
-          <div class="detail">
+          <div class="detail" >
             <div class="image">
-               <img [src]=[starshipImage] [alt]="starship.name" class="img">
-            </div>
-
+               <img [src]=[starshipImage] [alt]="starship.name" class="img" (error) = "defaultImage()">
+              </div>
             <h1 class="name">{{starship.name}}</h1>
 
 

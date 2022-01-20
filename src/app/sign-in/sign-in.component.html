@@ -1,0 +1,86 @@
+<div class="container">
+
+  <!-- <div class="modal-header"> -->
+     <button class="close-btn" type="button"
+     (click)="activeModal.dismiss('Cross click')"> ×
+    </button>
+    <img src="/assets/logo.png" alt="" height="50px" width="130px">
+
+    <h4 class="modal-title">Sign in</h4>
+
+  <!-- </div> -->
+  <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
+
+    <div class="form-group">
+
+      <input
+      type="firstName"
+      id="firstName"
+      class="form-control"
+      ngModel
+      name="firstName"
+      required
+      placeholder="firstName"
+
+      />
+    </div>
+    <div class="form-group">
+
+      <input
+      type="lastName"
+      id="lastName"
+      class="form-control"
+      ngModel
+      name="lastName"
+      required
+      placeholder="lastName"
+
+      />
+    </div>
+
+    <div class="form-group">
+
+      <input
+      type="email"
+      id="email"
+      class="form-control"
+      ngModel
+      name="email"
+      required
+      placeholder="email"
+
+      />
+    </div>
+
+    <span class="text">New display names need to be approved. Until then, you'll see a temporary display name.</span>
+    <div class="form-group">
+
+      <input
+      type="password"
+      id="password"
+      class="form-control"
+      ngModel
+      name="password"
+      required
+      minlength="6"
+      placeholder="password"
+      />
+    </div>
+    <button
+    class="btn btn-secondary btn-submit"
+    type="submit"
+    [disabled] = "!loginForm.valid"
+    >
+    Create an Account
+  </button>
+  <label for="" class="text">
+<input type="checkbox" name="showPassword" id="">
+Show password
+</label>
+    <div>
+  <div >
+  </div>
+  <div>
+    <p>Already have an account? <a href="">Sign In</a> </p>
+  </div>
+  </div>

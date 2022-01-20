@@ -37,3 +37,8 @@
   display: inline-block;
   width: 50%;
 }
+
+.btn-more{
+  border:whitesmoke;
+  color:whitesmoke;
+}
