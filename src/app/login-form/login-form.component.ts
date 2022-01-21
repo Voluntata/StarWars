@@ -60,9 +60,9 @@ export class LoginFormComponent implements OnInit {
 
 // si es modo de registrarse, comprobar si esta registrado, si no - guardar en local storage
     } else {
-      console.log(this.user);
+    //  console.log(this.user);
       this.users = JSON.parse(localStorage.getItem('users') || '');
-      console.log(this.users);
+     // console.log(this.users);
       if (isUserRegist) {
         console.log('User is already registered');
         this.isLoginMode = true
