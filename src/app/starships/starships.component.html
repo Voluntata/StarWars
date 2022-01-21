@@ -1,23 +1,17 @@
-
-
 <ul *ngFor="let starship of starships | paginate : {
   itemsPerPage: itemsPerPage,
   currentPage: page,
   totalItems: totalItems
 
 }; let i = index ">
-  <li><a routerLinkActive="active"  (click) = "onSelect(starship)">
-    <div>{{starship.name}} </div>
-    <div>{{starship.model}}</div></a>
+  <li><a routerLinkActive="active" (click)="onSelect(starship)">
+      <div>{{starship.name}} </div>
+      <div>{{starship.model}}</div>
+    </a>
   </li>
 
 </ul>
 
 <!-- <button class="btn btn-light" (click)= next()> View more</button> -->
 
-<pagination-controls
-  class="pagi"
-  (pageChange)="gty((page = $event))"
-></pagination-controls>
-
-
+<pagination-controls class="pagi" (pageChange)="gty((page = $event))"></pagination-controls>

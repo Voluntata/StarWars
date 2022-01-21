@@ -13,8 +13,8 @@ export class StarshipDetailComponent implements OnInit {
 
   starship!: Starship;
   id: number = 0;
-  starshipImage: string= '';
-  pilots= new Array;
+  starshipImage: string = '';
+  pilots = new Array;
 
   pilotsId: number[] = [];
 
@@ -22,44 +22,41 @@ export class StarshipDetailComponent implements OnInit {
 
 
   ngOnInit(): void {
-
+//obtener datos de cada starship
     this.activRoute.params
       .subscribe(
         (params: Params) => {
-          console.log(params)
+          //console.log(params)
           this.id = params['id'];
           this.starShipsService.getOne(this.id).subscribe((starships: Starship) => {
             this.starship = starships;
-            console.log(this.starship)
-            this.starshipImage = 'https://starwars-visualguide.com/assets/img/starships/'+this.id+'.jpg';
+           // console.log(this.starship)
+            this.starshipImage = 'https://starwars-visualguide.com/assets/img/starships/' + this.id + '.jpg';
             this.starshipPilots();
-            console.log(this.pilotsId);
-            //this.pilots = this.starship.pilots;
+          //  console.log(this.pilotsId);
+
           }
           )
         }
       );
 
   }
-
-  defaultImage(){
-   this.starshipImage = 'https://starwars-visualguide.com/assets/img/big-placeholder.jpg'
+ // poner imagen por defecto si no hay imagen
+  defaultImage() {
+    this.starshipImage = 'https://starwars-visualguide.com/assets/img/big-placeholder.jpg'
   }
-
-  starshipPilots(){
-   this.pilots = this.starship.pilots;
-   this.pilots.forEach(pilot => {
-   const pilotId = this.starShipsService.getId(pilot);
-   this.pilotsId.push(pilotId);
-   return this.pilotsId;
+// obtener id de pilotos que pertenesen a starship
+  starshipPilots() {
+    this.pilots = this.starship.pilots;
+    this.pilots.forEach(pilot => {
+      const pilotId = this.starShipsService.getId(pilot);
+      this.pilotsId.push(pilotId);
+      return this.pilotsId;
     });
- //   console.log('pilots - '+ this.pilots)
- //   console.log(this.pilotsId)
+    //   console.log('pilots - '+ this.pilots)
+    //   console.log(this.pilotsId)
 
   }
- pilotsF(){
-   console.log(this.pilotsId)
-   console.log(this.pilots)
- }
+
 }
 

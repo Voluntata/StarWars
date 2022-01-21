@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { StarshipsService } from 'src/services/starships.service';
-import { Pilot } from '../models/pilot';
 import { Starship } from '../models/starship';
 
 @Component({
@@ -24,34 +23,36 @@ export class StarshipsComponent implements OnInit {
 
 
   ngOnInit(): void {
-
-     this.getPage()
-
+    this.getPage()
   }
 
-  gty(page:any) {
+  //ngx-pagination function
+  gty(page: any) {
     this.http.get(`${this.starshipsService.baseUrl}?page=${page}&size=${this.itemsPerPage}/`)
       .subscribe((data: any) => {
-        if (data.result){
-        this.starships.push(data.result);}
+        if (data.result) {
+          this.starships.push(data.result);
+        }
       })
   }
-
+// elegir el starship y navegar al detalle
   onSelect(ship: Starship) {
     this.selectedShip = ship;
-    console.log(this.selectedShip)
+  //  console.log(this.selectedShip)
     this.id = this.starshipsService.getId(this.selectedShip.url)
     this.router.navigateByUrl('starships/' + this.id);
 
   }
-  getPage() {
-for (let i = 0; i<4; i++){
-    this.starshipsService.getApi(this.page+i).subscribe(response => {
-      console.log(response);
-      this.starships.push(...response)
 
-    });
-}
+  //obtener todas las paginas de starships
+  getPage() {
+    for (let i = 0; i < 4; i++) {
+      this.starshipsService.getApi(this.page + i).subscribe(response => {
+      //  console.log(response);
+        this.starships.push(...response)
+
+      });
+    }
 
 
   }

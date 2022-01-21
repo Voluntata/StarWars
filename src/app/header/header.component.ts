@@ -24,13 +24,4 @@ export class HeaderComponent implements OnInit {
     });
   }
 
-  openSignInModal() {
-    const modalRef = this.modalService.open(SignInComponent);
-
-    modalRef.result.then((result) => {
-      console.log(result);
-    }).catch((error) => {
-      console.log(error);
-    });
-  }
 }
