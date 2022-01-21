@@ -38,6 +38,9 @@
   width: 50%;
 }
 
+.properties p:last-child{
+  width: 100%;
+}
 .btn-more{
   border:whitesmoke;
   color:whitesmoke;

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { StarshipsService } from 'src/services/starships.service';
+import { Pilot } from '../models/pilot';
 import { Starship } from '../models/starship';
 
 @Component({
@@ -20,6 +21,7 @@ export class StarshipsComponent implements OnInit {
   ships: Starship[] = []
   starships: Starship[] = [];
   selectedShip!: Starship;
+
 
   ngOnInit(): void {
 
@@ -50,6 +52,8 @@ for (let i = 0; i<4; i++){
 
     });
 }
+
+
   }
 
 

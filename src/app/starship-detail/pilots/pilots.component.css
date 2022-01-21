@@ -1,0 +1,16 @@
+.container{
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  justify-content: flex-start;
+  width: 100%;
+
+}
+ .pilots{
+   width: 20%;
+   background-color: rgb(4, 3, 48);
+   border: 1px solid rgb(1, 1, 32);
+   padding: 0 1%;
+   font-size: small;
+   margin-right: 5%;
+ }

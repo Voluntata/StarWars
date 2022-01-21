@@ -13,6 +13,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { FormsModule } from '@angular/forms';
 import { SignInComponent } from './sign-in/sign-in.component';
+import { PilotsComponent } from './starship-detail/pilots/pilots.component';
 
 
 
@@ -25,7 +26,8 @@ import { SignInComponent } from './sign-in/sign-in.component';
     StarshipDetailComponent,
     HomeComponent,
     LoginFormComponent,
-    SignInComponent
+    SignInComponent,
+    PilotsComponent
 
   ],
   imports: [

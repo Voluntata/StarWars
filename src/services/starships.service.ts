@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators'
 import { Starship } from 'src/app/models/starship';
+import { Pilot } from 'src/app/models/pilot';
 // import { ApisData } from './infinite-scroll.service';
 
 
@@ -31,8 +32,10 @@ import { Starship } from 'src/app/models/starship';
 export class StarshipsService {
   constructor(private http: HttpClient) { }
   baseUrl = 'https://swapi.dev/api/starships/';
+  pilotsUrl = 'https://swapi.dev/api/people/'
   // baseUrl = 'https://swapi.py4e.com/api/starships';
   ships: Starship[] = []
+
 
 
   getId(url: string) {
@@ -56,13 +59,24 @@ export class StarshipsService {
     return this.http.get<Starship>(`${this.baseUrl}/${id}`)
   }
 
-  getApi(page: number) {
+  getPilots(): Observable<Pilot[]> {
+    return this.http.get<Pilot[]>(`${this.pilotsUrl}`).pipe(map((response: any) =>
+    <Pilot[]>response.results))
 
+  }
+
+  getPilot(id: number) {
+    return this.http.get<Pilot>(`${this.pilotsUrl}/${id}`)
+  }
+
+  getApi(page: number) {
     return this.http.get(`${this.baseUrl}/?page=${page}`)
     .pipe(map((response: any) =>
       <Starship[]>response.results))
 
   }
+
+
 
 }
 
