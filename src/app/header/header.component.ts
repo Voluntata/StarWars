@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { LoginFormComponent } from '../login-form/login-form.component';
-import { SignInComponent } from '../sign-in/sign-in.component';
 import { LoginModalService } from '../../services/login-modal.service';
 
 @Component({
@@ -15,20 +13,10 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  // openLoginModal() {
-  //   const modalRef = this.modalService.open(LoginFormComponent);
 
-  //   modalRef.result.then((result) => {
-  //     console.log(result);
-  //   }).catch((error) => {
-  //     console.log(error);
-  //   });
-  // }
- openLoginModal(){
-  this.loginService.openLoginModal(LoginFormComponent)
- }
+  openLoginModal() {
+    this.loginService.openLoginModal(LoginFormComponent)
+  }
 
- logout(){
-   this.loginService.logOut();
- }
+
 }

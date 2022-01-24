@@ -8,18 +8,19 @@ import { LoginFormComponent } from "src/app/login-form/login-form.component";
 
 @Injectable({ providedIn: 'root' })
 export class GuardService implements CanActivate {
-  constructor(private router: Router, public loginService: LoginModalService){}
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean  {
-      console.log("canActivate");
-      this.loginService.openLoginModal(LoginFormComponent);
-      if(this.loginService.isUserRegist){
+  constructor(private router: Router, public loginService: LoginModalService) { }
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
+    console.log("canActivate");
+    this.loginService.openLoginModal(LoginFormComponent);
+    if (this.loginService.isUserRegist) {
       this.loginService.closeModal(LoginFormComponent)
-        return true;
+      return true;
 
-      } else{
-      alert( "Register");
+    } else {
+     // alert("Register");
       this.router.navigate(["home"]);
-      return false;}
+      return false;
+    }
   }
 
 
