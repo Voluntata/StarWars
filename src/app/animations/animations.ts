@@ -5,7 +5,8 @@ import {
   style,
   query,
   group,
-  animateChild
+  animateChild,
+  state
 } from '@angular/animations';
 
 export const fadeAnimation = trigger('fadeAnimation', [
@@ -30,4 +31,5 @@ export const fadeAnimation = trigger('fadeAnimation', [
     )
   ])
 ]);
+
 

@@ -3,11 +3,18 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { Starship } from '../models/starship';
 import { StarshipsService } from '../../services/starships.service';
 import { Pilot } from '../models/pilot';
+import { slideInOutAnimation } from '../animations/side.animation';
 
 @Component({
   selector: 'app-starship-detail',
   templateUrl: './starship-detail.component.html',
-  styleUrls: ['./starship-detail.component.css']
+  styleUrls: ['./starship-detail.component.css'],
+      // make slide in/out animation available to this component
+      animations: [slideInOutAnimation],
+
+      // attach the slide in/out animation to the host (root) element of this component
+      host: { '[@slideInOutAnimation]': '' }
+
 })
 export class StarshipDetailComponent implements OnInit {
 
