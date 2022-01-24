@@ -3,6 +3,7 @@ import { FormGroup, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { User } from '../models/user';
+import { LoginModalService } from '../../services/login-modal.service';
 
 @Component({
   selector: 'app-login-form',
@@ -17,7 +18,7 @@ export class LoginFormComponent implements OnInit {
   }
   users: User[] = [];
 
-  constructor(public activeModal: NgbActiveModal, public router: Router) { }
+  constructor(public activeModal: NgbActiveModal, public router: Router, public loginService: LoginModalService) { }
 
 
   ngOnInit(): void {
@@ -38,19 +39,22 @@ export class LoginFormComponent implements OnInit {
     //obtener data de formulario
     this.user.email = form.value.email;
     this.user.password = form.value.password;
-    this.user.registered = true;
 
-    //comprobar si el usuario esta en Localstorage
-    const registUsers = JSON.parse(localStorage.getItem('users') || '');
-    const isUserRegist: boolean = registUsers.find((registUser: User) => {
-      return (registUser.email === this.user.email && registUser.password === this.user.password) ? true : false
-    });
+
+    //comprobar si el usuario esta en Localstorage (se mudo al servicio)
+    // const registUsers = JSON.parse(localStorage.getItem('users') || '');
+    // const isUserRegist: boolean = registUsers.find((registUser: User) => {
+    //   return (registUser.email === this.user.email && registUser.password === this.user.password) ? true : false
+    // });
+
+    const isUserRegist = this.loginService.isRegistered(this.user);
+    console.log(isUserRegist)
 
     if (this.isLoginMode) {
 // si es el modo de Login, comprobar si el usuario esta registardo
       if (isUserRegist) {
         console.log('User is logged');
-        this.activeModal.close('Modal Closed');
+        this.activeModal.close();
         this.router.navigate(['starships/'])
       }
       else {

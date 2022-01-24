@@ -8,6 +8,6 @@ export class User {
 
     this.email = user.email || null;
     this.password = user.password || null;
-    this.registered = user.registered || null;
+
   }
 }

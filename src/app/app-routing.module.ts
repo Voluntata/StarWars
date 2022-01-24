@@ -4,12 +4,13 @@ import { HomeComponent } from './home/home.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { StarshipDetailComponent } from './starship-detail/starship-detail.component';
 import { StarshipsComponent } from './starships/starships.component';
-import { SignInComponent } from './sign-in/sign-in.component';
+import { GuardService } from 'src/services/guard.service';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
   {path: 'home', component: HomeComponent},
-  {path: 'starships', component: StarshipsComponent},
+//  {path: 'login', component: LoginFormComponent},
+  {path: 'starships', component: StarshipsComponent, canActivate: [GuardService]},
   {path: 'starships/:id', component: StarshipDetailComponent},
   {path: '**', redirectTo: '/home'},
 ];

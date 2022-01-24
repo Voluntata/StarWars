@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { LoginFormComponent } from '../login-form/login-form.component';
 import { SignInComponent } from '../sign-in/sign-in.component';
+import { LoginModalService } from '../../services/login-modal.service';
 
 @Component({
   selector: 'app-header',
@@ -10,18 +11,24 @@ import { SignInComponent } from '../sign-in/sign-in.component';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(public modalService: NgbModal) { }
+  constructor(public loginService: LoginModalService) { }
 
   ngOnInit(): void {
   }
-  openLoginModal() {
-    const modalRef = this.modalService.open(LoginFormComponent);
+  // openLoginModal() {
+  //   const modalRef = this.modalService.open(LoginFormComponent);
 
-    modalRef.result.then((result) => {
-      console.log(result);
-    }).catch((error) => {
-      console.log(error);
-    });
-  }
+  //   modalRef.result.then((result) => {
+  //     console.log(result);
+  //   }).catch((error) => {
+  //     console.log(error);
+  //   });
+  // }
+ openLoginModal(){
+  this.loginService.openLoginModal(LoginFormComponent)
+ }
 
+ logout(){
+   this.loginService.logOut();
+ }
 }
