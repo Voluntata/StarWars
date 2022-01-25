@@ -11,6 +11,7 @@ export class LoginModalService {
     password: ""
   }
   users: User[] = [];
+  registUsers: User[] = [];
   isUserRegist: boolean = false;
 
 
@@ -20,7 +21,8 @@ export class LoginModalService {
     const modalRef = this.modalService.open(comp);
 
     modalRef.result.then((result) => {
-      console.log(result);
+      result
+     // console.log(result);
     }).catch((error) => {
       error
       // console.log(error);
@@ -33,11 +35,13 @@ export class LoginModalService {
 
  // comprobar si el usuario esta registradò
   isRegistered(user_: User) {
-    const registUsers = JSON.parse(localStorage.getItem('users') || '');
-    console.log(registUsers);
+
+    this.registUsers = JSON.parse(localStorage.getItem('users') || '');
+
+  console.log(this.registUsers);
     console.log(user_);
 
-    for (let user of registUsers) {
+    for (let user of this.registUsers) {
       if (user_.email == user.email && user_.password == user.password) {
         console.log(user_.email, user_.password)
         console.log(user.email, user.password)
@@ -49,7 +53,12 @@ export class LoginModalService {
       else {
         this.isUserRegist = false
       }
+
+
     }
+
+
+
     console.log(this.isUserRegist)
     return this.isUserRegist;
 

@@ -18,16 +18,24 @@
         type="email"
         id="email"
         class="form-control"
-        ngModel
+        #email="ngModel"
+        [(ngModel)] = "user.email"
         name="email"
         required
         placeholder="email"
       />
+      <div *ngIf="!email?.valid && (email?.dirty || email?.touched)" class="error">
+        <div *ngIf="email.errors" class="error-text">
+          Email must en format Email
+        </div>
+    </div>
     </div>
     <div class="form-group">
       <input
         type="password"
         id="password"
+        #password="ngModel"
+        [(ngModel)] = "user.password"
         class="form-control"
         ngModel
         name="password"
@@ -35,6 +43,11 @@
         minlength="6"
         placeholder="password"
       />
+      <div *ngIf="!password?.valid && (password?.dirty || password?.touched)" class="error">
+        <div *ngIf="password.errors" class="error-text">
+          Password must be more then 6 caracters
+        </div>
+    </div>
     </div>
     <button
       class="btn btn-secondary btn-submit"

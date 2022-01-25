@@ -10,7 +10,7 @@ import { LoginFormComponent } from "src/app/login-form/login-form.component";
 export class GuardService implements CanActivate {
   constructor(private router: Router, public loginService: LoginModalService) { }
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-    console.log("canActivate");
+  //  console.log("canActivate");
     this.loginService.openLoginModal(LoginFormComponent);
     if (this.loginService.isUserRegist) {
       this.loginService.closeModal(LoginFormComponent)
