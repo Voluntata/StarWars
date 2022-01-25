@@ -53,15 +53,10 @@ export class LoginModalService {
       else {
         this.isUserRegist = false
       }
-
-
     }
-
-
 
     console.log(this.isUserRegist)
     return this.isUserRegist;
-
 
   }
 }
