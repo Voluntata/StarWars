@@ -17,6 +17,8 @@ export class LoginFormComponent implements OnInit {
     password: ""
   }
   users: User[] = [];
+  isUserRegist: boolean = false;
+
 
   constructor(public activeModal: NgbActiveModal, public router: Router, public loginService: LoginModalService) { }
 
@@ -42,17 +44,19 @@ export class LoginFormComponent implements OnInit {
 
 
     //comprobar si el usuario esta en Localstorage (se mudo al servicio)
-    // const registUsers = JSON.parse(localStorage.getItem('users') || '');
-    // const isUserRegist: boolean = registUsers.find((registUser: User) => {
-    //   return (registUser.email === this.user.email && registUser.password === this.user.password) ? true : false
-    // });
 
-    const isUserRegist = this.loginService.isRegistered(this.user);
-    console.log(isUserRegist)
+    if(this.users.length >0){
+      console.log(this.users)
+    this.isUserRegist = this.loginService.isRegistered(this.user);}
+    // else{
+    //   this.isUserRegist = false;
+    // }
+    console.log(this.isUserRegist)
 
     if (this.isLoginMode) {
+     // console.log(this.isUserRegist)
       // si es el modo de Login, comprobar si el usuario esta registardo
-      if (isUserRegist) {
+      if (this.isUserRegist) {
         console.log('User is logged');
         this.activeModal.close();
         this.router.navigate(['starships/'])
@@ -63,32 +67,31 @@ export class LoginFormComponent implements OnInit {
 
       // si es modo de registrarse, comprobar si esta registrado, si no - guardar en local storage
     } else {
-     // console.log(this.user);
-     // console.log(this.users);
+     console.log(this.user);
+      console.log(this.users);
 
       //si ya hay usuarios registardos
-      if (this.users.length > 0) {
-        this.users = JSON.parse(localStorage.getItem('users') || '');
+        if(this.users.length > 0){
+        this.users = JSON.parse(localStorage.getItem('users') || '');}
+        else{
+          this.users.push(this.user);
+          this.isLoginMode = true;
+          console.log(this.users);
+        }
 
-        if (isUserRegist) {
-        alert('User is already registered');
+        if (this.isUserRegist) {
+       //alert('User is already registered');
           this.isLoginMode = true
         }
         else {
           this.users.push(this.user);
-          this.isLoginMode = false;
+          this.isLoginMode = true;
           console.log(this.users);
         }
-      }
-      // si no hay usuarios registardos
-      else {
-        this.users.push(this.user);
-        this.isLoginMode = true;
-        console.log(this.users);
-      }
- localStorage.setItem("users", JSON.stringify(this.users));
-    }
 
+ localStorage.setItem("users", JSON.stringify(this.users));
+
+   }
 
   }
 }

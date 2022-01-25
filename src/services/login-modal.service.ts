@@ -35,6 +35,7 @@ export class LoginModalService {
 
  // comprobar si el usuario esta registradò
   isRegistered(user_: User) {
+    console.log(this.users)
 
     this.registUsers = JSON.parse(localStorage.getItem('users') || '');
 
@@ -53,15 +54,10 @@ export class LoginModalService {
       else {
         this.isUserRegist = false
       }
-
-
     }
-
-
 
     console.log(this.isUserRegist)
     return this.isUserRegist;
-
 
   }
 }
