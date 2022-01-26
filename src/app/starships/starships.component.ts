@@ -14,7 +14,7 @@ export class StarshipsComponent implements OnInit {
 
   page: number = 1;
   itemsPerPage: number = 10;
-  totalItems: any;
+  totalItems: any = 36;
 
   id: number = 1;
   ships: Starship[] = []

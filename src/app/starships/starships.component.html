@@ -1,3 +1,5 @@
+<div class="container">
+
 <ul *ngFor="let starship of starships | paginate : {
   itemsPerPage: itemsPerPage,
   currentPage: page,
@@ -15,3 +17,4 @@
 <!-- <button class="btn btn-light" (click)= next()> View more</button> -->
 
 <pagination-controls class="pagi" (pageChange)="gty((page = $event))"></pagination-controls>
+</div>

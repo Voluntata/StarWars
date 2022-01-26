@@ -2,10 +2,12 @@
   <div class="image">
     <img [src]=[starshipImage] [alt]="starship.name" class="img" (error)="defaultImage()">
   </div>
-  <h1 class="name">{{starship.name}}</h1>
 
 
+   <h1 class="name">
+      {{starship.name}}</h1>
   <div class="properties">
+
     <p><b>Passengers:</b> {{starship.passengers}}</p>
     <p><b>Starship class:</b> {{starship.starship_class}}</p>
     <p><b>Cargo capacity:</b> {{starship.cargo_capacity}}</p>
